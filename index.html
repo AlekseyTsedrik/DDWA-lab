@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <title>ES-5</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+
+<body>
+  <center>
+  <br>
+    <input type="button" class="btn btn-primary" value="Создать" id="create" onclick="create()" />
+    <br>
+    <div id="create-product" style="width: 600px;">
+      <br>
+        <table class="table">
+            <tr>
+                <td>Тип товара: </td>
+                <td>
+                    <select class="form-control" onchange="onChangeProduct()">
+                        <option>
+                            Другой товар
+                        </option>
+                        <option>
+                            Молоко
+                        </option>
+                        <option>
+                            Рыба
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Название: </td>
+                <td>
+                    <input class="form-control" type="text" onblur="set('Name', event)" />
+                </td>
+            </tr>
+            <tr>
+                <td>Отдел: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('Department', event)" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Дата изготовления: </td>
+                <td>
+                    <input type="date" class="list-element" id="year"onkeydown="blockSym(event)" onblur="set('DateManufacture', event)" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Срок хранения: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('ShelfLife', event)" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Цена: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('Price', event)" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>Вес: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('Weight', event)" />
+                </td>
+            </tr>
+        </table>
+
+        <table class="table" id="milk-table">
+            <tr>
+                <td>Процент жирности: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('PercentFat', event)" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Объем: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('Volume', event)" />
+                </td>
+            </tr>
+        </table>
+        <table class="table" id="fish-table">
+            <tr>
+                <td>Разновидность: </td>
+                <td>
+                    <input type="text" class="form-control" onblur="set('Variety', event)" />
+                </td>
+            </tr>
+            <tr>
+                <td>Страна происхождения: </td>
+                <td>
+                    <input type="text" class="form-control" onkeydown="blockSym(event)" onblur="set(event, 'CountryOrigin')" />
+                </td>
+            </tr>
+        </table>
+        <input type="button" class="btn btn-primary" id="save" value="Сохранить" onclick="save()" />
+        <input type="button" class="btn btn-primary" id="update" value="Обновить" style="display: none;" />
+        <input type="button" class="btn btn-primary" id="back" value="Назад" onclick="displayAllBook()" />
+        <input type="button" class="btn btn-primary" value="Очистить" onclick="clearInputs()" />
+    </div>
+  </center>
+  <center>
+    <div id="all-products" style="width: 700px;">
+        <table class="table">
+            <tr onclick="alert(df)">
+                <td>Название</td>
+                <td>Отдел</td>
+                <td>Дата изготовления</td>
+                <td>Срок хранения</td>
+                <td>Цена</td>
+                <td>Вес</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div id="inform-table" style="display: none">
+        <input type="button" class="btn btn-primary" value="Назад" onclick="back()" />
+        <table>
+
+        </table>
+    </div>
+  </center>
+</body>
+<script src="API/api.js"></script>
+<script src="Models/index.js"></script>
+<script src="methods.js"></script>
+<script>
+setTimeout(function() {
+    visibleAllProducts()
+}, 2000)
+</script>
+
+</html>
