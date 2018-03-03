@@ -1,10 +1,12 @@
-function Product() {
+"use strict"
+
+function Product(name, department, dateManufacture, shelfLife, price, mass) {
   this.name = name;
   this.department = department;
   this.dateManufacture = dateManufacture;
   this.shelfLife = shelfLife;
   this.price = price;
-  this.weight = weight;
+  this.mass = mass;
 
   this.setId = function (id) {
     this.id = id;
@@ -22,7 +24,7 @@ function Product() {
     return this.name;
   }
 
-  this.setDepartament = function (department) {
+  this.setDepartment = function (department) {
     this.department = department;
   }
 
@@ -31,14 +33,14 @@ function Product() {
   }
 
   this.setDateManufacture = function (dateManufacture) {
-    this.dateManufacture = dateManufacture;
+    this.dateManufacture = dateManufacture.substr(0, 10);
   }
 
   this.getDateManufacture = function () {
     return this.dateManufacture;
   }
 
-  this.setShelfLife = function () {
+  this.setShelfLife = function (shelfLife) {
     this.shelfLife = shelfLife;
   }
 
@@ -54,27 +56,28 @@ function Product() {
     return this.price;
   }
 
-  this.setWeight = function (weight) {
-    this.weight = weight;
+  this.setMass = function (mass) {
+    this.mass = mass;
   }
 
-  this.getWeight = function () {
-    return this.weight;
+  this.getMass = function () {
+    return this.mass;
   }
 }
 
-function Milk() {
+function Milk(volume, percentFat) {
   this.volume = volume;
   this.percentFat = percentFat;
+  this.type = "milk";
 
   Product.call(this);
 
-  this.setVolume = function (percentVolume) {
-    this.percentVolume = percentVolume;
+  this.setVolume = function (volume) {
+    this.volume = volume;
   }
 
   this.getVolume = function () {
-    return this.percentVolume;
+    return this.volume;
   }
 
   this.setPercentFat = function (percentFat) {
@@ -86,9 +89,10 @@ function Milk() {
   }
 }
 
-function Fish() {
+function Fish(variety, countryOrigin) {
   this.variety = variety;
-  this.сountryOrigin = countryOrigin;
+  this.countryOrigin = countryOrigin;
+  this.type = "fish";
 
   Product.call(this);
 

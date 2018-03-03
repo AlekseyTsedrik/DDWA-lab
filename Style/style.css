@@ -1,0 +1,26 @@
+#milk-table,
+#fish-table,
+#create-product {
+    display: none;
+}
+
+.general-table {
+    border: 1px solid black;
+}
+
+.general-table td {
+    border: 1px solid black;
+    min-width: 70px;
+    text-align: center;
+    padding: 5px;
+}
+
+a:hover {
+    color: darkblue;
+    cursor: pointer;
+
+}
+a {
+    color: blue;
+    margin: 10px;
+}

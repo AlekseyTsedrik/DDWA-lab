@@ -3,14 +3,14 @@
 <head>
     <title>ES-5</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
 <body>
   <center>
   <br>
-    <input type="button" class="btn btn-primary" value="Создать" id="create" onclick="create()" />
-    <br>
+    <input type="button" class="btn btn-primary" value="Создать" id="create" onclick="createProduct()" />
     <div id="create-product" style="width: 600px;">
       <br>
         <table class="table">
@@ -33,41 +33,41 @@
             <tr>
                 <td>Название: </td>
                 <td>
-                    <input class="form-control" type="text" onblur="set('Name', event)" />
+                    <input class="form-control" type="text" onblur="setProperties('Name', event)" />
                 </td>
             </tr>
             <tr>
                 <td>Отдел: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('Department', event)" />
+                    <input type="text" class="form-control" onblur="setProperties('Department', event)" />
                 </td>
             </tr>
 
             <tr>
                 <td>Дата изготовления: </td>
                 <td>
-                    <input type="date" class="list-element" id="year"onkeydown="blockSym(event)" onblur="set('DateManufacture', event)" />
+                    <input type="date" id="dateMan" class="form-control" onblur="setProperties('DateManufacture', event)" />
                 </td>
             </tr>
 
             <tr>
-                <td>Срок хранения: </td>
+                <td>Срок хранения(дней): </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('ShelfLife', event)" />
+                    <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('ShelfLife', event)" />
                 </td>
             </tr>
 
             <tr>
                 <td>Цена: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('Price', event)" />
+                    <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('Price', event)" />
                 </td>
 
             </tr>
             <tr>
-                <td>Вес: </td>
+                <td>Масса: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('Weight', event)" />
+                    <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('Mass', event)" />
                 </td>
             </tr>
         </table>
@@ -76,14 +76,14 @@
             <tr>
                 <td>Процент жирности: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('PercentFat', event)" />
+                    <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('PercentFat', event)" />
                 </td>
             </tr>
 
             <tr>
                 <td>Объем: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('Volume', event)" />
+                    <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('Volume', event)" />
                 </td>
             </tr>
         </table>
@@ -91,26 +91,28 @@
             <tr>
                 <td>Разновидность: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="set('Variety', event)" />
+                    <input type="text" class="form-control" onblur="setProperties('Variety', event)" />
                 </td>
             </tr>
             <tr>
                 <td>Страна происхождения: </td>
                 <td>
-                    <input type="text" class="form-control" onkeydown="blockSym(event)" onblur="set(event, 'CountryOrigin')" />
+                    <input type="text" class="form-control" onblur="setProperties('CountryOrigin', event)" />
                 </td>
             </tr>
         </table>
-        <input type="button" class="btn btn-primary" id="save" value="Сохранить" onclick="save()" />
+        <input type="button" class="btn btn-primary" id="save" value="Сохранить" onclick="saveProduct()" />
+        <br>
         <input type="button" class="btn btn-primary" id="update" value="Обновить" style="display: none;" />
-        <input type="button" class="btn btn-primary" id="back" value="Назад" onclick="displayAllBook()" />
+        <input type="button" class="btn btn-primary" id="back" value="Назад" onclick="visibleAllProducts()" />
         <input type="button" class="btn btn-primary" value="Очистить" onclick="clearInputs()" />
     </div>
   </center>
   <center>
-    <div id="all-products" style="width: 700px;">
-        <table class="table">
-            <tr onclick="alert(df)">
+    <div id="all-products">
+      <br>
+        <table class="general-table">
+            <tr class="general">
                 <td>Название</td>
                 <td>Отдел</td>
                 <td>Дата изготовления</td>
@@ -123,19 +125,19 @@
     </div>
     <div id="inform-table" style="display: none">
         <input type="button" class="btn btn-primary" value="Назад" onclick="back()" />
-        <table>
+        <table class="general-table">
 
         </table>
     </div>
   </center>
 </body>
 <script src="API/api.js"></script>
-<script src="Models/index.js"></script>
 <script src="methods.js"></script>
+<script src="Models/index.js"></script>
 <script>
 setTimeout(function() {
-    visibleAllProducts()
-}, 2000)
+    getAllProducts()
+}, 0)
 </script>
 
 </html>
