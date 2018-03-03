@@ -33,13 +33,13 @@
             <tr>
                 <td>Название: </td>
                 <td>
-                    <input class="form-control" type="text" onblur="setProperties('Name', event)" />
+                    <input class="form-control" type="text" onkeydown="checkText(event)" onblur="setProperties('Name', event)" />
                 </td>
             </tr>
             <tr>
                 <td>Отдел: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="setProperties('Department', event)" />
+                    <input type="text" class="form-control" onkeydown="checkText(event)" onblur="setProperties('Department', event)" />
                 </td>
             </tr>
 
@@ -58,14 +58,14 @@
             </tr>
 
             <tr>
-                <td>Цена: </td>
+                <td>Цена(руб): </td>
                 <td>
                     <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('Price', event)" />
                 </td>
 
             </tr>
             <tr>
-                <td>Масса: </td>
+                <td>Масса(кг): </td>
                 <td>
                     <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('Mass', event)" />
                 </td>
@@ -74,14 +74,14 @@
 
         <table class="table" id="milk-table">
             <tr>
-                <td>Процент жирности: </td>
+                <td>Процент жирности(%): </td>
                 <td>
                     <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('PercentFat', event)" />
                 </td>
             </tr>
 
             <tr>
-                <td>Объем: </td>
+                <td>Объем(л): </td>
                 <td>
                     <input type="text" class="form-control" onkeydown="checkSymbol(event)" onblur="setProperties('Volume', event)" />
                 </td>
@@ -91,13 +91,13 @@
             <tr>
                 <td>Разновидность: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="setProperties('Variety', event)" />
+                    <input type="text" class="form-control" onkeydown="checkText(event)" onblur="setProperties('Variety', event)" />
                 </td>
             </tr>
             <tr>
                 <td>Страна происхождения: </td>
                 <td>
-                    <input type="text" class="form-control" onblur="setProperties('CountryOrigin', event)" />
+                    <input type="text" class="form-control" onkeydown="checkText(event)" onblur="setProperties('CountryOrigin', event)" />
                 </td>
             </tr>
         </table>
@@ -116,9 +116,9 @@
                 <td>Название</td>
                 <td>Отдел</td>
                 <td>Дата изготовления</td>
-                <td>Срок хранения</td>
-                <td>Цена</td>
-                <td>Вес</td>
+                <td>Срок хранения(дней)</td>
+                <td>Цена(руб)</td>
+                <td>Масса(кг)</td>
                 <td></td>
             </tr>
         </table>

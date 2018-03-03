@@ -4,12 +4,12 @@ var select = document.getElementsByTagName("select")[0];
 var date;
 
 function createProduct() {
-  this.visibleObj("save", "block");
-  this.visibleObj("create", "none");
-  this.visibleObj("update", "none");
-  this.visibleObj("inform-table", "none");
-  this.visibleObj("create-product", "block");
-  this.visibleObj("all-products", "none");
+  this.visibleElement("save", "block");
+  this.visibleElement("create", "none");
+  this.visibleElement("update", "none");
+  this.visibleElement("inform-table", "none");
+  this.visibleElement("create-product", "block");
+  this.visibleElement("all-products", "none");
   if (select.selectedIndex == 0) {
     currentProduct = new Product();
   } else if (select.selectedIndex == 1) {
@@ -62,6 +62,16 @@ function checkSymbol(event) {
         event.stopPropagation();
         return;
     }
+}
+
+function checkText(event) {
+  const value = event.key;
+  if (value.match(/[0-9]+/) != null) {
+    alert("В данном поле должны быть только буквы!");
+    event.preventDefault();
+    event.stopPropagation();
+    return;
+  }
 }
 
 function checkInputs() {
@@ -154,17 +164,17 @@ function loadProducts(products) {
   }
 }
 
-function visibleObj(className, type) {
+function visibleElement(className, type) {
     var obj = document.getElementById(className);
     obj.style.display = type;
 }
 
 function visibleAllProducts() {
-  this.visibleObj("all-products", "block");
-  this.visibleObj("create-product", "none");
-  this.visibleObj("create", "block");
-  this.visibleObj("update", "none");
-  this.visibleObj("inform-table", "none");
+  this.visibleElement("all-products", "block");
+  this.visibleElement("create-product", "none");
+  this.visibleElement("create", "block");
+  this.visibleElement("update", "none");
+  this.visibleElement("inform-table", "none");
 }
 
 function getAllProducts() {
@@ -187,9 +197,9 @@ function show(product) {
 }
 
 function showDetails(product) {
-  this.visibleObj("all-products", "none");
-  this.visibleObj("create-product", "none");
-  this.visibleObj("inform-table", "table");
+  this.visibleElement("all-products", "none");
+  this.visibleElement("create-product", "none");
+  this.visibleElement("inform-table", "table");
   var self = this;
   var container = document.getElementById("inform-table").getElementsByTagName("table")[0];
   var tr = document.createElement('tr');
@@ -334,8 +344,8 @@ function editProductInfo(product) {
       Elements[1].value = product.variety;
       Elements[0].value = product.countryOrigin;
   }
-  this.visibleObj("save", "none");
-  this.visibleObj("update", "block");
+  this.visibleElement("save", "none");
+  this.visibleElement("update", "block");
   var but = document.getElementById("update");
   but.addEventListener('click', function () {
       self.clearTable();
@@ -347,11 +357,11 @@ function editProductInfo(product) {
 }
 
 function edit(product) {
-    this.visibleObj("create-product", "block")
-    this.visibleObj("all-products", "none");
+    this.visibleElement("create-product", "block")
+    this.visibleElement("all-products", "none");
     this.editProductInfo(product);
-    this.visibleObj("create", "none");
-    this.visibleObj("inform-table", "none");
+    this.visibleElement("create", "none");
+    this.visibleElement("inform-table", "none");
 }
 
 function clearInputs() {
