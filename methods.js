@@ -25,7 +25,7 @@ function createProduct() {
 }
 
 function setProperties(properties, event) {
-  currentProduct["set" + properties](event.target.value);
+  currentProduct[properties] = event.target.value;
 }
 
 function onChangeProduct() {
@@ -91,7 +91,7 @@ function checkInputs() {
         var now = new Date();
         var current = new Date(el.value);
         if(now < current) {
-          return "Дата должна быть меньше текущей!";
+          return `Дата (${el.value}) не корректна! Она должна быть меньше текущей!`;
         }
       }
       if (el.value.match(/[A-Za-zА-Яа-я0-9]+/) == null) {
@@ -137,7 +137,7 @@ function loadProducts(products) {
     department.innerText = product.department;
     tr.appendChild(department);
     var dateManufacture = document.createElement("td");
-    dateManufacture.innerText = product.dateManufacture.substr(0, 10);
+    dateManufacture.innerText = product.dateManufacture.substr(0,10);
     tr.appendChild(dateManufacture);
     var shelfLife = document.createElement("td");
     shelfLife.innerText = product.shelfLife;
@@ -323,13 +323,13 @@ function back() {
 function editProductInfo(product) {
   var self = this;
   var container = document.getElementById("create-product").getElementsByTagName("table")[0];
-  var Elements = container.getElementsByClassName("form-control");
-  Elements[1].value = product.name;
-  Elements[2].value = product.department;
-  Elements[3].value = product.dateManufacture.substr(0,10);
-  Elements[4].value = product.shelfLife;
-  Elements[5].value = product.price;
-  Elements[6].value = product.mass;
+  let [select, name, department, dateManufacture, shelfLife, price, mass] = container.getElementsByClassName("form-control");
+  name.value = product.name;
+  department.value = product.department;
+  dateManufacture.value = product.dateManufacture.substr(0,10);
+  shelfLife.value = product.shelfLife;
+  price.value = product.price;
+  mass.value = product.mass;
   if (product.type == "milk") {
       select.selectedIndex = 1;
       var fishTable = document.getElementById("fish-table");

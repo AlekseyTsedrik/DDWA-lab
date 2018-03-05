@@ -1,114 +1,110 @@
 "use strict"
 
-function Product(name, department, dateManufacture, shelfLife, price, mass) {
-  this.name = name;
-  this.department = department;
-  this.dateManufacture = dateManufacture;
-  this.shelfLife = shelfLife;
-  this.price = price;
-  this.mass = mass;
-
-  this.setId = function (id) {
-    this.id = id;
+class Product {
+  constructor(name, department, dateManufacture, shelfLife, price, mass) {
+   this.name = name;
+   this.department = department;
+   this.dateManufacture = dateManufacture;
+   this.shelfLife = shelfLife;
+   this.price = price;
+   this.mass = mass;
   }
 
-  this.getId = function () {
-    return this.id;
-  }
-
-  this.setName = function (name) {
+  set Name(name) {
     this.name = name;
   }
 
-  this.getName = function () {
+  get Name() {
     return this.name;
   }
 
-  this.setDepartment = function (department) {
+  set Department(department) {
     this.department = department;
   }
 
-  this.getDepartment = function () {
+  get Department() {
     return this.department;
   }
 
-  this.setDateManufacture = function (dateManufacture) {
-    this.dateManufacture = dateManufacture.substr(0, 10);
+  set DateManufacture(dateManufacture) {
+    this.dateManufacture = dateManufacture;
   }
 
-  this.getDateManufacture = function () {
+  get DateManufacture() {
     return this.dateManufacture;
   }
 
-  this.setShelfLife = function (shelfLife) {
+  set ShelfLife(shelfLife) {
     this.shelfLife = shelfLife;
   }
 
-  this.getShelfLife = function () {
+  get ShelfLife() {
     return this.shelfLife;
   }
 
-  this.setPrice = function (price) {
+  set Price(price) {
     this.price = price;
   }
 
-  this.getPrice = function () {
+  get Price() {
     return this.price;
   }
 
-  this.setMass = function (mass) {
+  set Mass(mass) {
     this.mass = mass;
   }
 
-  this.getMass = function () {
+  get Mass() {
     return this.mass;
   }
 }
 
-function Milk(volume, percentFat) {
-  this.volume = volume;
-  this.percentFat = percentFat;
-  this.type = "milk";
+class Milk extends Product {
+  constructor(volume, percentFat) {
+    super();
+    this.volume = volume;
+    this.percentFat = percentFat;
+    this.type = "milk";
+  }
 
-  Product.call(this);
-
-  this.setVolume = function (volume) {
+  set Volume(volume) {
     this.volume = volume;
   }
 
-  this.getVolume = function () {
+  get Volume() {
     return this.volume;
   }
 
-  this.setPercentFat = function (percentFat) {
+  set PercentFat(percentFat) {
     this.percentFat = percentFat;
   }
 
-  this.getPercentFat = function (percentFat) {
+  get PercentFat() {
     return this.percentFat;
   }
 }
 
-function Fish(variety, countryOrigin) {
-  this.variety = variety;
-  this.countryOrigin = countryOrigin;
-  this.type = "fish";
+class Fish extends Product{
+  constructor(variety, countryOrigin) {
+    super();
+    this.variety = variety;
+    this.countryOrigin = countryOrigin;
+    this.type = "fish";
+  }
 
-  Product.call(this);
-
-  this.setVariety = function (variety) {
+  set Variety(variety) {
     this.variety = variety;
   }
 
-  this.getVariety = function () {
-    return variety;
+  get Variety() {
+    return this.variety;
   }
 
-  this.setCountryOrigin = function (countryOrigin) {
+  set CountryOrigin(countryOrigin) {
     this.countryOrigin = countryOrigin;
   }
 
-  this.getCountryOrigin = function () {
+  get CountryOrigin() {
     return this.countryOrigin;
   }
 }
