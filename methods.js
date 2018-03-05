@@ -29,8 +29,8 @@ function setProperties(properties, event) {
 }
 
 function onChangeProduct() {
-  var milkTable = document.getElementById("milk-table");
-  var fishTable = document.getElementById("fish-table");
+  let milkTable = document.getElementById("milk-table");
+  let fishTable = document.getElementById("fish-table");
   if (select.selectedIndex == 0) {
     milkTable.style.display = "none";
     fishTable.style.display = "none";
@@ -47,7 +47,7 @@ function onChangeProduct() {
 }
 
 function saveProduct() {
-  var message = this.checkInputs();
+  let message = this.checkInputs();
   if (message != null) {
     alert(message);
     return;
@@ -80,18 +80,18 @@ function checkText(event) {
 }
 
 function checkInputs() {
-  var container = document.getElementById("create-product").getElementsByTagName("table")[0];
-  var Elements = container.getElementsByClassName("form-control");
+  let container = document.getElementById("create-product").getElementsByTagName("table")[0];
+  let Elements = container.getElementsByClassName("form-control");
   for (var i = 0; i < Elements.length; i++) {
       var el = Elements[i];
       if (el.value === "") {
           return "Все поля должны быть заполнены!";
       }
       if (el.id == "dateMan") {
-        var now = new Date();
-        var current = new Date(el.value);
+        let now = new Date();
+        let current = new Date(el.value);
         if(now < current) {
-          return `Дата (${el.value}) не корректна! Она должна быть меньше текущей!`;
+          return `Дата (${el.value}) не корректна! Одолжна быть меньше текущей!`;
         }
       }
       if (el.value.match(/[A-Za-zА-Яа-я0-9]+/) == null) {
@@ -100,9 +100,9 @@ function checkInputs() {
   }
 
   if (currentProduct instanceof Milk) {
-      var container = document.getElementById("milk-table");
-      var Elements = container.getElementsByClassName("form-control");
-      var el = Elements[1];
+      let container = document.getElementById("milk-table");
+      let Elements = container.getElementsByClassName("form-control");
+      let el = Elements[1];
       if (el.value === "") {
           return "Все поля должны быть заполнены!";
       }
@@ -112,9 +112,9 @@ function checkInputs() {
   }
 
   if (currentProduct instanceof Fish) {
-      var container = document.getElementById("fish-table");
-      var Elements = container.getElementsByClassName("form-control");
-      var el = Elements[0];
+      let container = document.getElementById("fish-table");
+      let Elements = container.getElementsByClassName("form-control");
+      let el = Elements[0];
       if (el.value === "") {
           return "Все поля должны быть заполнены!";
       }
@@ -126,43 +126,43 @@ function checkInputs() {
 }
 
 function loadProducts(products) {
-  var container = document.getElementById("all-products").getElementsByTagName("table")[0];
-  for (var index in products) {
-    var product = products[index];
-    var tr = document.createElement('tr');
-    var name = document.createElement("td");
+  let container = document.getElementById("all-products").getElementsByTagName("table")[0];
+  for (let index in products) {
+    let product = products[index];
+    let tr = document.createElement('tr');
+    let name = document.createElement("td");
     name.innerText = product.name;
     tr.appendChild(name);
-    var department = document.createElement("td");
+    let department = document.createElement("td");
     department.innerText = product.department;
     tr.appendChild(department);
-    var dateManufacture = document.createElement("td");
-    dateManufacture.innerText = product.dateManufacture.substr(0,10);
+    let dateManufacture = document.createElement("td");
+    dateManufacture.innerText = product.dateManufacture;
     tr.appendChild(dateManufacture);
-    var shelfLife = document.createElement("td");
+    let shelfLife = document.createElement("td");
     shelfLife.innerText = product.shelfLife;
     tr.appendChild(shelfLife);
     container.appendChild(tr);
-    var price = document.createElement("td");
+    let price = document.createElement("td");
     price.innerText = product.price;
     tr.appendChild(price);
-    var mass = document.createElement("td");
+    let mass = document.createElement("td");
     mass.innerText = product.mass;
     tr.appendChild(mass);
     container.appendChild(tr);
-    var td = document.createElement("td");
-    var button = document.createElement("input");
+    let td = document.createElement("td");
+    let button = document.createElement("input");
     button.setAttribute("type", "button")
     button.addEventListener('click', deleteProduct(product.id));
     button.value = "Удалить";
     td.appendChild(button);
     tr.appendChild(td);
     container.appendChild(tr);
-    var button = document.createElement("input");
-    button.setAttribute("type", "button");
-    button.addEventListener('click', editProduct(product.id));
-    button.value = "Редактировать";
-    td.appendChild(button);
+    let button1 = document.createElement("input");
+    button1.setAttribute("type", "button");
+    button1.addEventListener('click', editProduct(product.id));
+    button1.value = "Редактировать";
+    td.appendChild(button1);
     tr.appendChild(td);
     container.appendChild(tr);
     tr.addEventListener('click', show(product));
@@ -170,7 +170,7 @@ function loadProducts(products) {
 }
 
 function visibleElement(className, type) {
-    var obj = document.getElementById(className);
+    let obj = document.getElementById(className);
     obj.style.display = type;
 }
 
@@ -205,43 +205,43 @@ function showDetails(product) {
   this.visibleElement("all-products", "none");
   this.visibleElement("create-product", "none");
   this.visibleElement("inform-table", "table");
-  var self = this;
-  var container = document.getElementById("inform-table").getElementsByTagName("table")[0];
-  var tr = document.createElement('tr');
-  var label = document.createElement("td");
+  let self = this;
+  let container = document.getElementById("inform-table").getElementsByTagName("table")[0];
+  let tr = document.createElement('tr');
+  let label = document.createElement("td");
   label.innerText = "Название";
   tr.appendChild(label);
-  var name = document.createElement("td");
+  let name = document.createElement("td");
   name.innerText = product.name;
   tr.appendChild(name);
   container.appendChild(tr);
 
   tr = document.createElement('tr');
-  var label = document.createElement("td");
+  let label = document.createElement("td");
   label.innerText = "Отдел";
   tr.appendChild(label);
-  var department = document.createElement("td");
+  let department = document.createElement("td");
   department.innerText = product.department;
   tr.appendChild(department);
   container.appendChild(tr);
   tr = document.createElement('tr');
-  var label = document.createElement("td");
+  let label = document.createElement("td");
   label.innerText = "Дата изготовления";
   tr.appendChild(label);
-  var dateManufacture = document.createElement("td");
+  let dateManufacture = document.createElement("td");
   dateManufacture.innerText = product.dateManufacture.substr(0, 10);
   tr.appendChild(dateManufacture);
   container.appendChild(tr);
   tr = document.createElement('tr');
-  var label = document.createElement("td");
+  let label = document.createElement("td");
   label.innerText = "Срок хранения";
   tr.appendChild(label);
-  var shelfLife = document.createElement("td");
+  let shelfLife = document.createElement("td");
   shelfLife.innerText = product.shelfLife;
   tr.appendChild(shelfLife);
   container.appendChild(tr);
   tr = document.createElement('tr');
-  var label = document.createElement("td");
+  let label = document.createElement("td");
   label.innerText = "Цена";
   tr.appendChild(label);
   var price = document.createElement("td");
@@ -249,45 +249,45 @@ function showDetails(product) {
   tr.appendChild(price);
   container.appendChild(tr);
   tr = document.createElement('tr');
-  var label = document.createElement("td");
+  let label = document.createElement("td");
   label.innerText = "Масса";
   tr.appendChild(label);
-  var mass = document.createElement("td");
+  let mass = document.createElement("td");
   mass.innerText = product.mass;
   tr.appendChild(mass);
   container.appendChild(tr);
   if (product.type == "milk") {
       tr = document.createElement('tr');
-      var label = document.createElement("td");
+      let label = document.createElement("td");
       label.innerText = "Процент жирности";
       tr.appendChild(label);
-      var percentFat = document.createElement("td");
+      let percentFat = document.createElement("td");
       percentFat.innerText = product.percentFat;
       tr.appendChild(percentFat);
       container.appendChild(tr);
 
       tr = document.createElement('tr');
-      var label = document.createElement("td");
+      let label = document.createElement("td");
       label.innerText = "Объем";
       tr.appendChild(label);
-      var volume = document.createElement("td");
+      let volume = document.createElement("td");
       volume.innerText = product.volume;
       tr.appendChild(volume);
       container.appendChild(tr);
   } else if (product.type == "fish") {
       tr = document.createElement('tr');
-      var label = document.createElement("td");
+      let label = document.createElement("td");
       label.innerText = "Разновидность";
       tr.appendChild(label);
-      var variety = document.createElement("td");
+      let variety = document.createElement("td");
       variety.innerText = product.variety;
       tr.appendChild(variety);
       container.appendChild(tr);
       tr = document.createElement('tr');
-      var label = document.createElement("td");
+      let label = document.createElement("td");
       label.innerText = "Страна происхождения";
       tr.appendChild(label);
-      var countryOrigin = document.createElement("td");
+      let countryOrigin = document.createElement("td");
       countryOrigin.innerText = product.countryOrigin;
       tr.appendChild(countryOrigin);
       container.appendChild(tr);
@@ -306,10 +306,10 @@ function deleteProduct(id) {
 }
 
 function clearTable() {
-    var container = document.getElementById("all-products").getElementsByTagName("tr");
-    var table = document.getElementById("all-products").getElementsByTagName("table")[0];
-    var conLength = container.length;
-    for (var i = 1; i < conLength; i++) {
+    let container = document.getElementById("all-products").getElementsByTagName("tr");
+    let table = document.getElementById("all-products").getElementsByTagName("table")[0];
+    let conLength = container.length;
+    for (let i = 1; i < conLength; i++) {
         table.removeChild(container[1]);
     }
 }
@@ -321,8 +321,8 @@ function back() {
 }
 
 function editProductInfo(product) {
-  var self = this;
-  var container = document.getElementById("create-product").getElementsByTagName("table")[0];
+  let self = this;
+  let container = document.getElementById("create-product").getElementsByTagName("table")[0];
   let [select, name, department, dateManufacture, shelfLife, price, mass] = container.getElementsByClassName("form-control");
   name.value = product.name;
   department.value = product.department;
@@ -332,18 +332,18 @@ function editProductInfo(product) {
   mass.value = product.mass;
   if (product.type == "milk") {
       select.selectedIndex = 1;
-      var fishTable = document.getElementById("fish-table");
-      var milkTable = document.getElementById("milk-table");
-      var Elements = milkTable.getElementsByClassName("form-control");
+      let fishTable = document.getElementById("fish-table");
+      let milkTable = document.getElementById("milk-table");
+      let Elements = milkTable.getElementsByClassName("form-control");
       fishTable.style.display = "none";
       milkTable.style.display = "table";
       Elements[0].value = product.volume;
       Elements[1].value = product.percentFat;
   } else if (product.type == "fish") {
       select.selectedIndex = 2;
-      var fishTable = document.getElementById("fish-table");
-      var Elements = fishTable.getElementsByClassName("form-control");
-      var milkTable = document.getElementById("milk-table");
+      let fishTable = document.getElementById("fish-table");
+      let Elements = fishTable.getElementsByClassName("form-control");
+      let milkTable = document.getElementById("milk-table");
       fishTable.style.display = "table";
       milkTable.style.display = "none";
       Elements[1].value = product.variety;
@@ -351,7 +351,7 @@ function editProductInfo(product) {
   }
   this.visibleElement("save", "none");
   this.visibleElement("update", "block");
-  var but = document.getElementById("update");
+  let but = document.getElementById("update");
   but.addEventListener('click', function () {
       self.clearTable();
       api.put(JSON.stringify(currentProduct), product.id, getAllProducts);
@@ -370,17 +370,17 @@ function edit(product) {
 }
 
 function clearInputs() {
-    var arrayValue = document.getElementById("create-product").getElementsByClassName("form-control");
-    for (var i = 0; i < arrayValue.length; i++) {
-        var val = arrayValue[i];
+    let arrayValue = document.getElementById("create-product").getElementsByClassName("form-control");
+    for (let i = 0; i < arrayValue.length; i++) {
+        let val = arrayValue[i];
             val.value = "";
     }
 }
 
 function clearTableInfo() {
-    var arrayValue = document.getElementById("inform-table").getElementsByTagName("table")[0].rows;
-    for (var i = 1; i < arrayValue.length; i++) {
-        var val = arrayValue[i];
+    let arrayValue = document.getElementById("inform-table").getElementsByTagName("table")[0].rows;
+    for (let i = 1; i < arrayValue.length; i++) {
+        let val = arrayValue[i];
         val.innerText = "";
     }
 }
@@ -388,8 +388,8 @@ function clearTableInfo() {
 function searchProduct(table, searchText) {
   let iterator = new Iterator(table);
   let row = iterator.next();
-  while (row != null) {
-    visibleRow(row, searchInRows(searchText, row, [0, 1, 2]));
+  while (row.value != null) {
+    visibleRow(row.value, searchInRows(searchText, row.value, [0, 1, 2]));
     row = iterator.next();
   }
 }
@@ -406,7 +406,7 @@ function searchInRows(searchText, row, cellsArray = [0]) {
 function searchInCell(searchText, row, cellIndex) {
   let textInCell = row.cells[cellIndex].textContent;
   let lowSearchText = toLowerText(searchText);
-  var result = toLowerText(textInCell).includes(lowSearchText);
+  let result = toLowerText(textInCell).includes(lowSearchText);
   return result;
 }
 
@@ -415,7 +415,7 @@ function Iterator(table) {
   let row = table.rows;
   return {
     next: function() {
-      return current < row.length ? row[current++] : null;
+      return current < row.length ? {value: row[current++], done: false} : {done: true};
     }
   }
 }
