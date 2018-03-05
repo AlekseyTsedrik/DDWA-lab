@@ -8,6 +8,10 @@
 </head>
 
 <body>
+  <center style="margin-left: 70%">
+    <input type="text" style="width:400px;" id="searchText" class="form-control">
+    <input type="button" class="btn btn-primary" value="Поиск" onclick="searchProduct(table, searchText.value)">
+  </center>
   <center>
   <br>
     <input type="button" class="btn btn-primary" value="Создать" id="create" onclick="createProduct()" />
@@ -111,7 +115,7 @@
   <center>
     <div id="all-products">
       <br>
-        <table class="general-table">
+        <table id="table" class="general-table">
             <tr class="general">
                 <td>Название</td>
                 <td>Отдел</td>

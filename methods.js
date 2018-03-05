@@ -2,6 +2,11 @@ var currentProduct;
 var api = new API();
 var select = document.getElementsByTagName("select")[0];
 var date;
+const toLowerText = (text) => text.toLowerCase();
+const visibleRow = (row, bool) => {
+  row.hidden = bool;
+}
+
 
 function createProduct() {
   this.visibleElement("save", "block");
@@ -378,4 +383,39 @@ function clearTableInfo() {
         var val = arrayValue[i];
         val.innerText = "";
     }
+}
+
+function searchProduct(table, searchText) {
+  let iterator = new Iterator(table);
+  let row = iterator.next();
+  while (row != null) {
+    visibleRow(row, searchInRows(searchText, row, [0, 1, 2]));
+    row = iterator.next();
+  }
+}
+
+function searchInRows(searchText, row, cellsArray = [0]) {
+  for (let cell in cellsArray) {
+    if (searchInCell(searchText, row, cell)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function searchInCell(searchText, row, cellIndex) {
+  let textInCell = row.cells[cellIndex].textContent;
+  let lowSearchText = toLowerText(searchText);
+  var result = toLowerText(textInCell).includes(lowSearchText);
+  return result;
+}
+
+function Iterator(table) {
+  let current = 1;
+  let row = table.rows;
+  return {
+    next: function() {
+      return current < row.length ? row[current++] : null;
+    }
+  }
 }
