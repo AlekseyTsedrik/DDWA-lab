@@ -1,32 +1,24 @@
-function API() {
-  var url = "http://localhost:2403/products/";
+var url = "http://localhost:2403/products/";
 
-  this.get = function (parm, callback) {
-    fetch(url + parm)
-    .then(function(response) {
-    return response.json();
-  })
-  .then(callback);
-  }
+async function Get(parm, callback) {
+  let responseJson = await fetch(url + parm);
+  let resp = await responseJson.json();
+  return await callback(resp);
+}
 
-  this.post = function(parm, callback) {
-    let options = {method: 'Post', headers: {'Content-Type': 'application/json'}, body: parm};
-    fetch(url, options)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(callback);
-  }
+async function Post(parm) {
+  let options = {method: 'Post', headers: {'Content-Type': 'application/json'}, body: parm};
+  let resp = await fetch(url, options);
+}
 
-  this.put = function (parm, id, callback) {
-    let options = {method: 'Put', headers: {'Content-Type': 'application/json'}, body: parm};
-    fetch(url + id, options)
-    .then(callback);
-  }
+async function Put(parm, id, callback) {
+  let options = {method: 'Put', headers: {'Content-Type': 'application/json'}, body: parm};
+  let resp = await fetch(url + id, options);
+  return callback(resp);
+}
 
-  this.delete = function (id, callback) {
-    let options = {method: 'Delete'};
-    fetch(url + id, options)
-    .then(callback);
-  }
+async function Delete(id, callback) {
+  let options = {method: 'Delete'};
+  let resp = await fetch(url + id, options);
+  return callback(resp);
 }

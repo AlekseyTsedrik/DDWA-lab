@@ -1,5 +1,4 @@
 var currentProduct;
-var api = new API();
 var select = document.getElementsByTagName("select")[0];
 var date;
 const toLowerText = (text) => text.toLowerCase();
@@ -52,7 +51,7 @@ function saveProduct() {
     alert(message);
     return;
   }
-  api.post(JSON.stringify(currentProduct), loadProducts);
+  Post(JSON.stringify(currentProduct));
   this.visibleAllProducts();
   this.clearInputs();
 }
@@ -183,13 +182,13 @@ function visibleAllProducts() {
 }
 
 function getAllProducts() {
-  api.get("", loadProducts);
+  Get("", loadProducts);
 }
 
 function editProduct(id) {
   return function (event) {
       self.createProduct();
-      api.get(id, edit);
+      Get(id, edit);
       event.preventDefault();
       event.stopPropagation();
   }
@@ -298,7 +297,7 @@ function deleteProduct(id) {
   return function (event) {
     if(confirm("Вы уверены?")) {
       self.clearTable(event);
-      api.delete(id, getAllProducts);
+      Delete(id, getAllProducts);
       event.preventDefault();
       event.stopPropagation();
     }
@@ -354,7 +353,7 @@ function editProductInfo(product) {
   let but = document.getElementById("update");
   but.addEventListener('click', function () {
       self.clearTable();
-      api.put(JSON.stringify(currentProduct), product.id, getAllProducts);
+      Put(JSON.stringify(currentProduct), product.id, getAllProducts);
       self.clearInputs();
       self.visibleAllProducts();
 
