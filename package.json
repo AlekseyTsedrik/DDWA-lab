@@ -1,0 +1,26 @@
+{
+  "name": "ddwa-lab",
+  "version": "1.0.0",
+  "description": "lab",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlekseyTsedrik/DDWA-lab.git"
+  },
+  "author": "Aleksey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlekseyTsedrik/DDWA-lab/issues"
+  },
+  "homepage": "https://github.com/AlekseyTsedrik/DDWA-lab#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.10",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}

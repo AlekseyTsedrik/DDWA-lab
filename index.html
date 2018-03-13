@@ -8,10 +8,13 @@
 </head>
 
 <body>
+  <nav>
+    <img src="D:\DDWA-lab\app\img\logo.png" height="30%" style="margin-left: 10%">
   <center style="margin-left: 70%">
     <input type="text" style="width:400px;" id="searchText" class="form-control">
     <input type="button" class="btn btn-primary" value="Поиск" onclick="searchProduct(table, searchText.value)">
   </center>
+    </nav>
   <center>
   <br>
     <input type="button" class="btn btn-primary" value="Создать" id="create" onclick="createProduct()" />
@@ -117,14 +120,16 @@
       <br>
         <table id="table" class="general-table">
             <tr class="general">
-                <td>Название</td>
-                <td>Отдел</td>
-                <td>Дата изготовления</td>
-                <td>Срок хранения(дней)</td>
-                <td>Цена(руб)</td>
-                <td>Масса(кг)</td>
+                <td data-type="string" onclick="sortTable(table, event);">Название</td>
+                <td data-type="string" onclick="sortTable(table, event);">Отдел</td>
+                <td onclick="sortTable(table, event);">Дата изготовления</td>
+                <td data-type="number" onclick="sortTable(table, event);">Срок хранения(дней)</td>
+                <td data-type="number" onclick="sortTable(table, event);">Цена(руб)</td>
+                <td data-type="number" onclick="sortTable(table, event);">Масса(кг)</td>
                 <td></td>
             </tr>
+            <tbody>
+            </tbody>
         </table>
     </div>
     <div id="inform-table" style="display: none">
@@ -135,12 +140,16 @@
     </div>
     <br>
     Количество продуктов: <input type="text" id="countProduct" />
+    <a class="navbar-brand" href="http://yandex.by"><img src="D:\DDWA-lab\app\img\banner.png">
+   </a>
   </center>
 </body>
-<script src="API/api.js"></script>
-<script src="methods.js"></script>
-<script src="Models/index.js"></script>
-<script src="main.js"></script>
+<script src="app/js/api.js"></script>
+<script src="app/js/methods.js"></script>
+<script src="app/js/product.js"></script>
+<script src="app/js/milk.js"></script>
+<script src="app/js/fish.js"></script>
+<script src="app/js/main.js"></script>
 <script>
 setTimeout(function() {
     getAllProducts()
